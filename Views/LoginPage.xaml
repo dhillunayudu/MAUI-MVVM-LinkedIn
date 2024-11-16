@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LinkedInClone.Views.LoginPage"
+             xmlns:local="clr-namespace:LinkedInClone.ViewModels.Authentication"
+             BackgroundColor="{StaticResource PageBackgroundWhite}"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <!--SIGNIN BLACK-->
+            <Style x:Key="SigninLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="Text" Value="Sign in"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="TitleSpan" TargetType="Span">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="Text" Value="Sign in"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <!--ENTRY CONTAINER-->
+            <Style x:Key="EntryContainer" TargetType="Border">
+                <Setter Property="Stroke" Value="{StaticResource BlueBayoux}"/>
+                <Setter Property="StrokeShape">
+                    <RoundRectangle  CornerRadius="4"/>
+                </Setter>
+            </Style>
+
+            <Style x:Key="ForgotPasswordLink" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="TextColor" Value="{StaticResource ScienceBlue}"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            <Style x:Key="BaseEntry" TargetType="Entry">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            <Style x:Key="PrimaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor"  Value="{StaticResource ScienceBlue}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="CornerRadius" Value="24"/>
+            </Style>
+
+            <Style x:Key="SecondaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor"  Value="White"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="CornerRadius" Value="24"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="BorderWidth" Value="1.5"/>
+            </Style>
+
+            <Style x:Key="OrLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Text" Value=" or "/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="Padding" Value="12,0,12,0"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:LoginViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="24">
+            <Label HorizontalOptions="Center" Margin="0,24,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text=".Net" Style="{StaticResource TitleSpan}" FontSize="16" TextColor="{StaticResource ScienceBlue}"/>
+                        <Span Text=" " Style="{StaticResource TitleSpan}"/>
+                        <Span Text=" MAUI " Style="{StaticResource TitleSpan}" FontSize="28" TextColor="White" BackgroundColor="{StaticResource ScienceBlue}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <BoxView HeightRequest="64" BackgroundColor="{StaticResource PageBackgroundWhite}"/>
+            <Label Style="{StaticResource SigninLabel}"/>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="or" Style="{StaticResource TitleSpan}" FontSize="12" TextColor="Black"/>
+                        <Span Text=" " Style="{StaticResource TitleSpan}"/>
+                        <Span Text=" Join MAUI Community " Style="{StaticResource TitleSpan}" FontSize="14" TextColor="{StaticResource ScienceBlue}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <BoxView HeightRequest="20" BackgroundColor="{StaticResource PageBackgroundWhite}"/>
+            <Border Style="{StaticResource EntryContainer}">
+                <Entry Text="{Binding Username}" Style="{StaticResource BaseEntry}" Placeholder="Email or Phone"/>    
+            </Border>
+            <BoxView HeightRequest="8" BackgroundColor="{StaticResource PageBackgroundWhite}"/>
+            <Border Style="{StaticResource EntryContainer}">
+                <Entry Text="{Binding Password}" Style="{StaticResource BaseEntry}" Placeholder="Password" IsPassword="True"/>
+            </Border>
+            <BoxView HeightRequest="24" BackgroundColor="{StaticResource PageBackgroundWhite}"/>
+            <Button Text="Forgot password?" Style="{StaticResource ForgotPasswordLink}"/>
+            <BoxView HeightRequest="24" BackgroundColor="{StaticResource PageBackgroundWhite}"/>
+            <Button Text="Sign in" Command="{Binding SignInCommand}" Style="{StaticResource PrimaryButton}"/>
+            <BoxView HeightRequest="36" BackgroundColor="{StaticResource PageBackgroundWhite}"/>
+            <Grid RowDefinitions="Auto">
+                <BoxView HeightRequest="1" Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource Pampas}"/>
+                <Label Style="{StaticResource OrLabel}" Grid.Row="0" Grid.Column="0" />
+            </Grid>
+            <BoxView HeightRequest="24" BackgroundColor="{StaticResource PageBackgroundWhite}"/>
+            <Button Text="Sign in with Google" Style="{StaticResource SecondaryButton}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
