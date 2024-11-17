@@ -1,4 +1,5 @@
-﻿using LinkedInClone.Views.Home;
+﻿using LinkedInClone.Views;
+using LinkedInClone.Views.Home;
 
 namespace LinkedInClone
 {
@@ -8,7 +9,7 @@ namespace LinkedInClone
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new TabbedHost());
+            MainPage = new LoginPage(); //new NavigationPage(new TabbedHost());
         }
     }
 }

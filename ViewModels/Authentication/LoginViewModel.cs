@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
+using LinkedInClone.Views.Home;
 
 namespace LinkedInClone.ViewModels.Authentication
 {
@@ -21,7 +22,7 @@ namespace LinkedInClone.ViewModels.Authentication
             var validationResult = Validate();
             if (validationResult.Item1)
             {
-                // TODO : Navigate to home page
+                Application.Current.MainPage = new NavigationPage(new TabbedHost());
             }
             else
             {
