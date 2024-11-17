@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LinkedInClone.Views.Home.TabbedHost"
+            xmlns:local="clr-namespace:LinkedInClone.Views"
+            xmlns:notifications="clr-namespace:LinkedInClone.Views.Notifications"
+            xmlns:jobs="clr-namespace:LinkedInClone.Views.Jobs"
+            xmlns:network="clr-namespace:LinkedInClone.Views.Network"
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+            xmlns:icons="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="{StaticResource PageBackgroundWhite}"
+            BarTextColor="{StaticResource BlueBayoux}"
+            SelectedTabColor="{StaticResource ScienceBlue}"
+            UnselectedTabColor="{StaticResource BlueBayoux}">
+
+    <Page.Resources>
+        <ResourceDictionary>
+
+            <Style TargetType="Label" x:Key="SearchLabel">
+                <Setter Property="TextColor" Value="{StaticResource BlueBayoux}"/>
+                <Setter Property="Margin" Value="12,0,0,0"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Text" Value="Search"/>
+            </Style>
+
+            <Style TargetType="ImageButton" x:Key="NavBarIcon">
+                <Setter Property="Margin" Value="12"/>
+            </Style>
+            
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <NavigationPage.TitleView>
+        <ContentView BackgroundColor="{StaticResource PageBackgroundWhite}" >
+            <Grid ColumnDefinitions="24,24,8,*,48,48">
+                <toolkit:AvatarView ImageSource="dhillu_avatar.png" Grid.Column="1" Margin="10" HeightRequest="36" WidthRequest="36" Text="DN" BackgroundColor="{StaticResource ScienceBlue}"/>
+                <Border Grid.Column="3" Margin="0,10,0,10" Stroke="{StaticResource Pampas}" BackgroundColor="{StaticResource Pampas}">
+                    <Label Style="{StaticResource SearchLabel}"/>
+                </Border>
+                <ImageButton Source="edit_square.png" Grid.Column="4" Style="{StaticResource NavBarIcon}"/>
+                <ImageButton Source="chat_home.png" Grid.Column="5" Style="{StaticResource NavBarIcon}"/>
+            </Grid>
+        </ContentView>
+    </NavigationPage.TitleView>
+    
+    <local:HomePage Title="Home" IconImageSource="home_tab.png"/>
+    <notifications:NotificationsPage Title="Notifications" IconImageSource="notifications_tab.png"/>
+    <network:MyNetworkPage Title="My Network" IconImageSource="network_tab.png"/>
+    <jobs:JobsPage Title="Jobs" IconImageSource="jobs_tab.png"/>
+    
+</TabbedPage>

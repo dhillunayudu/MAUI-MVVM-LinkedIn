@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="LinkedInClone.Views.Controls.PostView"
+             BackgroundColor="{StaticResource PageBackgroundWhite}"
+             Margin="2">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="AuthorNameLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+            </Style>
+
+            <Style x:Key="AuthorDescriptionLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="FontSize" Value="12"/>
+            </Style>
+
+            <Style x:Key="FollowButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+                <Setter Property="TextColor" Value="{StaticResource ScienceBlue}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+
+            <Style x:Key="PostTitleLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="PostDescriptionLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <Style x:Key="PostOptionsTitleLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlueBayoux}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
+        
+    <Grid RowDefinitions="16,16,16,32,Auto,1,42" RowSpacing="2" ColumnSpacing="8" ColumnDefinitions="48,*,*" Margin="18,18,18,8">
+
+        <toolkit:AvatarView Text="DN" ImageSource="dhillu_avatar.png" BackgroundColor="{StaticResource ScienceBlue}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"/>
+        <Label Style="{StaticResource AuthorNameLabel}" Grid.Row="0" Grid.Column="1" Text="{Binding Author.Name}" />
+        <Label Style="{StaticResource AuthorDescriptionLabel}" Grid.Row="1" Grid.Column="1" Text="{Binding Author.Description}" />
+
+        <Button Style="{StaticResource FollowButton}" Text="Follow" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
+
+        <Label Style="{StaticResource PostTitleLabel}" Text="{Binding Title}" Grid.Row="3" Grid.ColumnSpan="3"/>
+        <Label Text="{Binding Description}" Grid.Row="4" Grid.ColumnSpan="3" Style="{StaticResource PostDescriptionLabel}"/>
+
+        <BoxView Grid.Row="5" Grid.ColumnSpan="3"/>
+
+        <Grid Grid.Row="6" Grid.ColumnSpan="3" RowDefinitions="6,*,16" ColumnDefinitions="*,*,*,*" VerticalOptions="Center" >
+            <!--LIKE-->
+            <ImageButton Grid.Row="1" Grid.Column="0" VerticalOptions="Center" Source="like_post_normal.png"/>
+            <Label Grid.Row="2" Grid.Column="0" Text="Like" Style="{StaticResource PostOptionsTitleLabel}"/>
+
+            <!--COMMENT-->
+            <ImageButton Grid.Row="1" Grid.Column="1" Source="comment_post.png"/>
+            <Label Grid.Row="2" Grid.Column="1" Text="Comment" Style="{StaticResource PostOptionsTitleLabel}"/>
+
+            <!--REPOST-->
+            <ImageButton Grid.Row="1" Grid.Column="2" Source="repost_post.png"/>
+            <Label Grid.Row="2" Grid.Column="2" Text="Repost" Style="{StaticResource PostOptionsTitleLabel}"/>
+
+            <!--REPOST-->
+            <ImageButton Grid.Row="1" Grid.Column="3" Source="send_post.png"/>
+            <Label Grid.Row="2" Grid.Column="3" Text="Send" Style="{StaticResource PostOptionsTitleLabel}"/>
+            
+        </Grid>
+
+    </Grid>
+</ContentView>
